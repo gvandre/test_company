@@ -14,7 +14,9 @@ module.exports = {
             })
             // The whole response has been received. Print out the result.
             resp.on('end', () => {
-                resolve({'word': search.word, 'resultSearch': parseInt(JSON.parse(data).searchInformation.totalResults), 'engine': search.name})
+                let response = JSON.parse(data)
+                if (response.error) resolve({'word': search.word, 'resultSearch': 0, 'engine': search.name, 'message': response.error.message})
+                else resolve({'word': search.word, 'resultSearch': parseInt(JSON.parse(data).searchInformation.totalResults), 'engine': search.name})
             })
             }).on('error', (err) => {
                 reject({'message': err.message})

@@ -5,6 +5,9 @@ let SearchInyection = class SearchInyection {
     }
 
     startSearchEngine (arg) {
+        // this.searchGoogle.startSearchEngine(arg)
+        // this.searchBing.startSearchEngine(arg)
+
         return  new Promise ((resolve, reject) => {
             let onlyArguments = arg.slice(2, arg.length)
             if (onlyArguments.length === 0) {
@@ -13,7 +16,7 @@ let SearchInyection = class SearchInyection {
             // Guardamos las promesas
             let resultGoogle = this.searchGoogle.startSearchEngine(onlyArguments)
             let resultBing = this.searchBing.startSearchEngine(onlyArguments)
-            
+ 
             // Esperamos repuesta de las promesas
             Promise.all([resultGoogle, resultBing]).then( res => {
                 resolve(res)

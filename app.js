@@ -10,3 +10,4 @@ inyec.startSearchEngine(process.argv).then(result => {
     console.log('- Info: ocurrio un error')
     console.log(err)
 })
+// Example: inyec.startSearchEngine(process.argv)
